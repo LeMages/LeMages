@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loïc Cupif</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            background-color: rgba(255, 255, 255, 0.98);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .profile-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-name {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-button.contact {
+            background: #111;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        .nav-button.contact:hover {
+            background: #333;
+            color: #fff;
+        }
+        .container {
+            padding: 0;
+            width: 100%;
+        }
+
+        .container-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+            width: 100%;
+        }
+
+        #contact {
+            background: #F9F8F6;
+            padding: 4rem 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #contact h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
+            text-align: center;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 80%;
+            max-width: 1000px;
+            display: flex;
+            gap: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-info {
+            flex: 1;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contact-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .contact-details h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .contact-details p {
+            color: #666;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .contact-social {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .social-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .social-button svg {
+            width: 22px;
+            height: 22px;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+        }
+
+        .social-button:hover svg {
+            opacity: 1;
+            transform: translateY(-1px);
+        }
+
+        .linkedin-button svg {
+            fill: #0a66c2;
+        }
+
+        .github-button svg {
+            fill: #1d1d1f;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            background-color: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            margin-top: auto;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #1d1d1f;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-right {
+            font-size: 0.85rem;
+            color: #86868b;
+            letter-spacing: -0.01em;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 72px;
+            background-color: #ffffff;
+            color: #1d1d1f;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        #projets {
+            background: #F9F8F6;
+            padding: 4rem 0;
+            width: 100%;
+        }
+
+        #projets h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
+            text-align: center;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .projets-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+            padding: 0 40px;
+            gap: 40px;
+        }
+
+        .projet-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            width: 100%;
+        }
+
+        .projet-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        .projet-content {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .projet-card:hover .projet-image {
+            transform: scale(1.05);
+        }
+
+        .projet-card:hover .projet-content {
+            opacity: 1;
+        }
+
+        .projet-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .projet-description {
+            color: #f0f0f0;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .projets-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .projet-skills {
+            display: flex;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+        .projet-skill {
+            background: #e0e7ef;
+            color: #234;
+            font-size: 0.95rem;
+            padding: 0.35em 0.9em;
+            border-radius: 999px;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            transition: background 0.2s;
+        }
+        .projet-card:hover .projet-skill {
+            background: #bcd0e6;
+        }
+
+        #me {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #F5F1E9 0%, #ECE2D0 100%);
+            overflow: hidden;
+        }
+
+        /* Cercles décoratifs */
+        #me .circle-top-right,
+        #me .circle-bottom-left {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, 
+                rgba(163, 191, 250, 0.08),
+                rgba(163, 191, 250, 0.03)
+            );
+            z-index: 0;
+            opacity: 0.9;
+        }
+
+        #me .circle-top-right {
+            top: -200px;
+            right: -200px;
+        }
+
+        #me .circle-bottom-left {
+            bottom: -200px;
+            left: -200px;
+        }
+
+        @media (max-width: 768px) {
+            #me .circle-top-right,
+            #me .circle-bottom-left {
+                width: 400px;
+                height: 400px;
+            }
+
+            #me .circle-top-right {
+                top: -150px;
+                right: -150px;
+            }
+
+            #me .circle-bottom-left {
+                bottom: -150px;
+                left: -150px;
+            }
+        }
+
+        /* Forme supplémentaire */
+        .me-center::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(225deg, 
+                rgba(163, 191, 250, 0.05),
+                rgba(163, 191, 250, 0.02)
+            );
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            animation: floatShape 20s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatShape {
+            0%, 100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+        }
+
+        .me-center {
+            text-align: center;
+            position: relative;
+            font-size: 2.4rem;
+            line-height: 1.8;
+            color: #4A4A4A;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            padding: 0 3rem;
+            opacity: 0;
+            animation: fadeInUpMe 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUpMe {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ligne décorative en haut de la section */
+        #me::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent,
+                rgba(163, 191, 250, 0.4),
+                transparent
+            );
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .me-center {
+                font-size: 1.8rem;
+                padding: 0 2rem;
+                margin: 0 1.5rem;
+            }
+
+            #me::before,
+            #me .circle-bottom-left {
+                width: 400px;
+                height: 400px;
+            }
+
+            #me::before {
+                top: -150px;
+                right: -150px;
+            }
+
+            #me .circle-bottom-left {
+                bottom: -150px;
+                left: -150px;
+            }
+
+            .me-center::before {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        #expertise {
+            background: #F9F8F6;
+            padding: 4rem 0;
+            display: block;
+        }
+
+        #expertise h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
+            text-align: center;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .expertise-container {
+            display: flex;
+            gap: 2rem;
+            padding: 0 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 400px;
+            overflow-x: hidden;
+        }
+
+        .expertise-list {
+            flex: 0 0 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            padding-left: 1rem;
+            overflow-x: hidden;
+        }
+
+        .expertise-list-item {
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            font-weight: 500;
+            color: #1d1d1f;
+            position: relative;
+            left: 0;
+        }
+
+        .expertise-list-item:hover {
+            background: #f8f9fa;
+            left: 5px;
+        }
+
+        .expertise-list-item.active {
+            background: #1d1d1f;
+            color: white;
+        }
+
+        .expertise-content {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            display: none;
+        }
+
+        .expertise-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .expertise-content-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-content-desc {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .expertise-content-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .expertise-content-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .expertise-content-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .expertise-container {
+                flex-direction: column;
+            }
+
+            .expertise-list {
+                position: relative;
+                top: 0;
+                max-height: none;
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+            font-size: 0.85rem;
+            color: #86868b;
+            letter-spacing: -0.01em;
+        }
+
+        .language-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #86868b;
+            transition: color 0.2s ease;
+            letter-spacing: -0.01em;
+        }
+
+        .language-button.active {
+            color: #1d1d1f;
+            font-weight: 500;
+        }
+
+        .language-button:hover:not(.active) {
+            color: #1d1d1f;
+        }
+
+        .language-separator {
+            color: #d2d2d7;
+            user-select: none;
+        }
+
+        .projet-github {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .projet-github:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .projet-github svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Effet de profondeur et animation pour #home */
+        #home {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #home::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: url('assets/background.jpg') center/cover no-repeat;
+            opacity: 0;
+            transform: scale(1.1);
+            animation: bgDepthHome 1.5s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        @keyframes bgDepthHome {
+            from {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        #home .container-home {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        #home .name {
+            font-size: 9rem;
+            font-weight: 900;
+            color: #fff;
+            margin: 0;
+            line-height: 1;
+            transform: translateX(-33%);
+            animation: slideFromLeftHome 1s ease-out forwards;
+        }
+        #home .surname {
+            font-size: 9rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px #fff;
+            margin: 0;
+            line-height: 1;
+            transform: translateX(33%);
+            animation: slideFromRightHome 1s ease-out forwards;
+        }
+        @keyframes slideFromLeftHome {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-33%);
+                opacity: 1;
+            }
+        }
+        @keyframes slideFromRightHome {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(33%);
+                opacity: 1;
+            }
+        }
+        #home .down-arrow-btn {
+            position: absolute;
+            left: 50%;
+            bottom: 40px;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.7);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            transition: 0.2s, box-shadow 0.2s, transform 0.2s;
+            z-index: 2;
+        }
+        #home .down-arrow-btn:hover {
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            transform: translateX(-50%) scale(1.08);
+        }
+        #home .down-arrow-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: #1d1d1f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-section">
+            <img src="assets/profile.jfif" alt="Photo de profil de Loïc Cupif" class="profile-image">
+            <span class="profile-name">Loïc Cupif</span>
+        </div>
+        <nav class="nav-buttons">
+            <div class="language-switch">
+                <button class="language-button active" onclick="setLanguage('fr')">FR</button>
+                <span class="language-separator">|</span>
+                <button class="language-button" onclick="setLanguage('en')">EN</button>
+            </div>
+            <a href="https://www.linkedin.com/in/lo%C3%AFc-cupif-b3b078252/" target="_blank" class="social-button linkedin-button" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/LeMages" target="_blank" class="social-button github-button" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </nav>
+    </header>
+    <div class="container" id="home">
+        <div class="container-home">
+            <h1 class="name">LOIC</h1>
+            <h1 class="surname">CUPIF</h1>
+        </div>
+        <button class="down-arrow-btn" id="go-to-me" aria-label="Aller à la section suivante">
+            <svg viewBox="0 0 24 24"><path d="M12 16.5c-.28 0-.53-.11-.71-.29l-7-7a1.003 1.003 0 0 1 1.42-1.42L12 13.59l6.29-6.3a1.003 1.003 0 0 1 1.42 1.42l-7 7c-.18.18-.43.29-.71.29z"/></svg>
+        </button>
+    </div>
+    <div class="container" id="me">
+        <div class="circle-top-right"></div>
+        <div class="circle-bottom-left"></div>
+        <div class="me-center" data-i18n="me.description">
+            Étudiant à l'EFREI Paris en section internationale, je suis passionné par le développement full-stack et l'intelligence artificielle. Actuellement, je travaille sur Brie IA, un projet innovant visant à intégrer des solutions d'IA pour la crypto-monnaie.
+        </div>
+    </div>
+    <div class="container" id="projets">
+        <h1 data-i18n="projects.title">Mes Projets</h1>
+        <div class="projets-grid">
+            <div class="projet-card">
+                <img src="assets/projets/1.jpg" alt="Projet 1" class="projet-image">
+                <div class="projet-content">
+                    <h2 class="projet-title" data-i18n="projects.sudoku.title">Sudoku-Solver</h2>
+                    <p class="projet-description" data-i18n="projects.sudoku.description">L'un de mes premiers projets personnels, ce solveur de Sudoku est une application Python conçue pour résoudre des grilles de Sudoku 9x9 à l'aide d'un algorithme de backtracking. Les utilisateurs peuvent soumettre des grilles personnalisées avec des valeurs manquantes (représentées par des zéros), et le programme trouve une solution valide de manière récursive et efficace.</p>
+                    <div class="projet-skills">
+                        <span class="projet-skill">Python</span>
+                        <span class="projet-skill">Algorithme</span>
+                        <span class="projet-skill">Backtracking</span>
+                    </div>
+                    <a href="https://github.com/LeMages/Sudoku-Solver" class="projet-github" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span data-i18n="projects.view.github">Voir sur GitHub</span>
+                    </a>
+                </div>
+            </div>
+            <div class="projet-card">
+                <img src="assets/projets/2.png" alt="Projet 2" class="projet-image">
+                <div class="projet-content">
+                    <h2 class="projet-title" data-i18n="projects.boardgame.title">Board-Game-App</h2>
+                    <p class="projet-description" data-i18n="projects.boardgame.description">Réalisé dans le cadre d'un projet scolaire, Board Game Guessr est une application web interactive qui met au défi les joueurs de deviner des jeux de société à partir d'images et d'indices progressifs. Ce projet, l'un de mes premiers projets d'envergure, combine un frontend dynamique en Vue.js avec un backend robuste en Node.js et une base de données MySQL. Les utilisateurs peuvent créer un compte, suivre leurs statistiques, gagner des badges, et relever un défi quotidien. Ce projet m'a permis d'explorer le développement full-stack, de la conception d'une interface utilisateur intuitive à la gestion sécurisée des données, tout en renforçant ma compréhension des technologies web modernes.</p>
+                    <div class="projet-skills">
+                        <span class="projet-skill">Node.js / Vue.js / MySQL</span>
+                        <span class="projet-skill">Base de données</span>
+                        <span class="projet-skill">API</span>
+                    </div>
+                    <a href="https://github.com/LeMages/Board-Game-App/tree/app" class="projet-github" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span data-i18n="projects.view.github">Voir sur GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="expertise">
+        <h1 data-i18n="expertise.title">Mon expertise</h1>
+        <div class="expertise-container">
+            <div class="expertise-content active" id="web-content">
+                <h2 class="expertise-content-title" data-i18n="expertise.web.title">Fondamentaux du web</h2>
+                <p class="expertise-content-desc" data-i18n="expertise.web.desc">Trio essentiel du développement web</p>
+                <div class="expertise-content-icons">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                </div>
+            </div>
+            <div class="expertise-content" id="framework-content">
+                <h2 class="expertise-content-title" data-i18n="expertise.framework.title">Framework</h2>
+                <p class="expertise-content-desc" data-i18n="expertise.framework.desc">Compétent dans le framework Vue.js, améliorant les interfaces utilisateurs avec des conceptions dynamiques et réactives</p>
+                <div class="expertise-content-icons">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js">
+                </div>
+            </div>
+            <div class="expertise-content" id="figma-content">
+                <h2 class="expertise-content-title" data-i18n="expertise.figma.title">Figma</h2>
+                <p class="expertise-content-desc" data-i18n="expertise.figma.desc">Compétent dans Figma, facilitant une collaboration transparente et une mise en œuvre efficace du design</p>
+                <div class="expertise-content-icons">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                </div>
+            </div>
+            <div class="expertise-content" id="backend-content">
+                <h2 class="expertise-content-title" data-i18n="expertise.backend.title">Backend: JS</h2>
+                <p class="expertise-content-desc" data-i18n="expertise.backend.desc">Maîtrise du développement backend avec Node.js et Express, permettant la création d'API performantes, sécurisées et évolutives. Expérience dans la conception de solutions SaaS robustes et déployables dans le cloud.</p>
+                <div class="expertise-content-icons">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg" alt="SaaS/Cloud">
+                </div>
+            </div>
+            <div class="expertise-content" id="languages-content">
+                <h2 class="expertise-content-title" data-i18n="expertise.languages.title">Langages de programmation</h2>
+                <p class="expertise-content-desc" data-i18n="expertise.languages.desc">Maîtrise de plusieurs langages pour répondre à des besoins variés, du scripting à la performance système.</p>
+                <div class="expertise-content-icons">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" alt="Rust">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+                </div>
+            </div>
+            <div class="expertise-content" id="devops-content">
+                <h2 class="expertise-content-title" data-i18n="expertise.devops.title">DevOps & Outils</h2>
+                <p class="expertise-content-desc" data-i18n="expertise.devops.desc">Expérience avec les outils essentiels du DevOps pour l'automatisation, la gestion de versions et le déploiement de conteneurs.</p>
+                <div class="expertise-content-icons">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+            </div>
+            <div class="expertise-content" id="tauri-content">
+                <h2 class="expertise-content-title" data-i18n="expertise.tauri.title">Tauri</h2>
+                <p class="expertise-content-desc" data-i18n="expertise.tauri.desc">Utilisation de Tauri pour créer des applications desktop performantes en combinant Rust pour le backend et Vue.js pour l'interface utilisateur.</p>
+                <div class="expertise-content-icons">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tauri/tauri-original.svg" alt="Tauri">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" alt="Rust">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js">
+                </div>
+            </div>
+            <div class="expertise-list">
+                <div class="expertise-list-item active" data-expertise="web">Fondamentaux du web</div>
+                <div class="expertise-list-item" data-expertise="framework">Framework</div>
+                <div class="expertise-list-item" data-expertise="figma">Figma</div>
+                <div class="expertise-list-item" data-expertise="backend">Backend: JS</div>
+                <div class="expertise-list-item" data-expertise="languages">Langages de programmation</div>
+                <div class="expertise-list-item" data-expertise="devops">DevOps & Outils</div>
+                <div class="expertise-list-item" data-expertise="tauri">Tauri</div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="contact">
+        <h1 data-i18n="contact.title">Me Contacter</h1>
+        <div class="contact-card">
+            <div class="contact-info">
+                <div class="contact-profile">
+                    <img src="assets/profile.jfif" alt="Photo de profil de Loïc Cupif">
+                </div>
+                <div class="contact-details">
+                    <h2>Loïc Cupif</h2>
+                    <p data-i18n="contact.student">Étudiant à EFREI Paris</p>
+                    <p data-i18n="contact.email">mail: loiccupif@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-social">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+            <span>Loïc Cupif</span>
+        </div>
+        <div class="footer-right">
+            <span data-i18n="footer.copyright">© 2024</span>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script>
+        // Mettre à jour l'état actif des boutons de langue
+        function updateLanguageButtons(lang) {
+            document.querySelectorAll('.language-button').forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent.toLowerCase() === lang) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Modifier la fonction setLanguage existante
+        const originalSetLanguage = setLanguage;
+        setLanguage = function(lang) {
+            originalSetLanguage(lang);
+            updateLanguageButtons(lang);
+        };
+
+        // Initialiser les boutons de langue
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'fr';
+            updateLanguageButtons(savedLanguage);
+        });
+
+        // Gestion de l'expertise interactive
+        document.addEventListener('DOMContentLoaded', () => {
+            const expertiseItems = document.querySelectorAll('.expertise-list-item');
+            const expertiseContents = document.querySelectorAll('.expertise-content');
+
+            expertiseItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Mise à jour des classes active
+                    expertiseItems.forEach(i => i.classList.remove('active'));
+                    expertiseContents.forEach(c => c.classList.remove('active'));
+                    
+                    item.classList.add('active');
+                    const contentId = `${item.dataset.expertise}-content`;
+                    document.getElementById(contentId).classList.add('active');
+                });
+
+                // Gestion du défilement
+                item.addEventListener('mouseenter', () => {
+                    if (!item.classList.contains('active')) {
+                        expertiseItems.forEach(i => i.classList.remove('active'));
+                        expertiseContents.forEach(c => c.classList.remove('active'));
+                        
+                        item.classList.add('active');
+                        const contentId = `${item.dataset.expertise}-content`;
+                        document.getElementById(contentId).classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Masquer le header uniquement quand #home est visible
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            const homeSection = document.getElementById('home');
+            const body = document.body;
+            if (header && homeSection) {
+                const observer = new window.IntersectionObserver(
+                    (entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                header.style.display = 'none';
+                                body.style.paddingTop = '0';
+                            } else {
+                                header.style.display = 'flex';
+                                body.style.paddingTop = '72px';
+                            }
+                        });
+                    },
+                    { threshold: 0.3 }
+                );
+                observer.observe(homeSection);
+            }
+        });
+
+        // Scroll fluide vers #me au clic sur la flèche
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('go-to-me');
+            const meSection = document.getElementById('me');
+            if(btn && meSection) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    meSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

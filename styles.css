@@ -1,0 +1,15 @@
+/* Réinitialisation des styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #fafafa;
+    min-height: 100vh;
+}
+
