@@ -1,0 +1,171 @@
+---
+---
+
+<section id="about" class="about">
+  <div class="container" data-reveal>
+    <div class="section-label">À propos</div>
+
+    <div class="about-grid">
+      <div class="about-photo">
+        <img
+          src="/images/profile.jpg"
+          alt="Photo de Loïc Cupif"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <div class="about-text">
+        <h2 class="about-title">Du pipeline au modèle<span>.</span></h2>
+
+        <p>
+          Étudiant en 5ème année Data Engineering & Machine Learning à l'EFREI Paris.
+          J'ai effectué un échange académique à Concordia (Montréal) où j'ai approfondi
+          le machine learning appliqué.
+        </p>
+        <p>
+          Je recherche actuellement un stage de fin d'études en tant que Data Engineer.
+          En dehors du code, je suis passionné de handball et de Formule 1.
+        </p>
+
+        <div class="about-cards">
+          <div class="info-card">
+            <div class="info-card-label">Nom</div>
+            <div class="info-card-value">Loïc Cupif</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Email</div>
+            <div class="info-card-value">loiccupif@gmail.com</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Localisation</div>
+            <div class="info-card-value">Paris, France</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Focus</div>
+            <div class="info-card-value">Data Eng · ML</div>
+          </div>
+        </div>
+
+        <a href="/CV.pdf" download="CV_Loic_Cupif.pdf" class="btn-cv">
+          ↓ Télécharger mon CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 86px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 54px;
+    margin-top: 30px;
+    align-items: start;
+  }
+
+  .about-photo {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .about-title {
+    font: 700 clamp(30px, 4vw, 44px) / 1.08 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .about-title span {
+    color: var(--accent);
+  }
+
+  .about-text p {
+    font: 400 17px / 1.7 'Manrope', sans-serif;
+    color: #bcbcc4;
+    margin: 22px 0 0;
+  }
+
+  .about-text p + p {
+    margin-top: 16px;
+  }
+
+  .about-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 30px;
+  }
+
+  .info-card {
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+  }
+
+  .info-card-label {
+    font: 600 11px 'Manrope', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .info-card-value {
+    font: 600 16px 'Manrope', sans-serif;
+    color: var(--text);
+    margin-top: 5px;
+  }
+
+  .btn-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 26px;
+    font: 700 15px 'Manrope', sans-serif;
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 13px 22px;
+    border-radius: 13px;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-cv:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .about-photo {
+      aspect-ratio: 16/9;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

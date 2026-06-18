@@ -1,0 +1,372 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const projets = await getCollection('projets');
+  return projets.map((projet) => ({
+    params: { slug: projet.id },
+    props: { projet },
+  }));
+}
+
+const { projet } = Astro.props;
+const { Content } = await render(projet);
+
+const allProjets = await getCollection('projets');
+const sorted = allProjets.sort((a, b) => a.data.ordre - b.data.ordre);
+const currentIndex = sorted.findIndex((p) => p.id === projet.id);
+const prevProjet = currentIndex > 0 ? sorted[currentIndex - 1] : null;
+const nextProjet = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
+---
+
+<BaseLayout
+  title={`${projet.data.titre} — Loïc Cupif`}
+  description={projet.data.tagline}
+>
+  <Nav currentPath={`/projets/${projet.slug}`} />
+
+  <main>
+    <!-- HERO -->
+    <section class="detail-hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container detail-hero-inner">
+
+        <a href="/projets" class="back-link">← Tous les projets</a>
+
+        <div class="section-label" style="margin-top: 28px;">
+          {projet.data.featured ? 'Projet principal' : 'Projet'}
+          {projet.data.contexteGroupe && ' · Projet de groupe'}
+        </div>
+
+        <h1 class="detail-title">{projet.data.titre}</h1>
+        <p class="detail-tagline">{projet.data.tagline}</p>
+
+        <div class="detail-meta">
+          <div class="stack-badges">
+            {projet.data.stack.map((tech) => (
+              <span class="tag-muted">{tech}</span>
+            ))}
+          </div>
+
+          {projet.data.lienGithub && (
+            <a
+              href={projet.data.lienGithub}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-github"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .269.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+              </svg>
+              GitHub
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTRIQUES -->
+    {projet.data.metriques && projet.data.metriques.length > 0 && (
+      <section class="metriques-section">
+        <div class="container">
+          <div class="metriques-grid">
+            {projet.data.metriques.map((m) => (
+              <div class="metrique-card">
+                <div class="metrique-val">{m.valeur}</div>
+                <div class="metrique-lbl">{m.label}</div>
+              </div>
+            ))}
+          </div>
+          {projet.id === 'augur' && (
+            <p class="metriques-note">Métriques obtenues sur le dataset Rossmann.</p>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- CONTENU MARKDOWN -->
+    <section class="detail-content">
+      <div class="container">
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <div class="detail-nav container">
+      <div>
+        {prevProjet && (
+          <a href={`/projets/${prevProjet.id}`} class="nav-link nav-prev">
+            <span class="nav-dir">← Précédent</span>
+            <span class="nav-name">{prevProjet.data.titre}</span>
+          </a>
+        )}
+      </div>
+      <div>
+        {nextProjet && (
+          <a href={`/projets/${nextProjet.id}`} class="nav-link nav-next">
+            <span class="nav-dir">Suivant →</span>
+            <span class="nav-name">{nextProjet.data.titre}</span>
+          </a>
+        )}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ─── Hero ─────────────────────────────────────── */
+  .detail-hero {
+    position: relative;
+    padding: 54px 0 64px;
+    overflow: hidden;
+  }
+
+  .glow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    width: 700px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, var(--accent-soft), transparent 72%);
+    filter: blur(20px);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .detail-hero-inner {
+    position: relative;
+    max-width: 900px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: 600 14px 'Manrope', sans-serif;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--text);
+  }
+
+  .detail-title {
+    font: 700 clamp(40px, 6.5vw, 74px) / 1 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+    margin: 20px 0 0;
+    color: var(--text);
+  }
+
+  .detail-tagline {
+    font: 400 18px / 1.65 'Manrope', sans-serif;
+    color: #bcbcc4;
+    max-width: 680px;
+    margin: 18px 0 0;
+  }
+
+  .detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .stack-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-muted {
+    font: 500 12px 'Manrope', sans-serif;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    padding: 5px 11px;
+    border-radius: 8px;
+  }
+
+  .btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font: 700 15px 'Manrope', sans-serif;
+    color: var(--accent-ink);
+    background: var(--accent);
+    padding: 13px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .btn-github:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+
+  /* ─── Métriques ─────────────────────────────────── */
+  .metriques-section {
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .metriques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .metrique-card {
+    padding: 24px 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    text-align: center;
+    transition: border-color 0.2s ease;
+  }
+
+  .metrique-card:hover {
+    border-color: var(--accent-soft);
+  }
+
+  .metrique-val {
+    font: 700 clamp(28px, 4vw, 40px) 'Space Grotesk', sans-serif;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .metrique-lbl {
+    font: 500 12px 'Manrope', sans-serif;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .metriques-note {
+    font: 400 13px 'Manrope', sans-serif;
+    color: var(--muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* ─── Contenu Markdown ──────────────────────────── */
+  .detail-content {
+    padding: 64px 0 48px;
+  }
+
+  .prose {
+    max-width: 740px;
+    font: 400 17px / 1.8 'Manrope', sans-serif;
+    color: #cdcdd4;
+  }
+
+  .prose :global(h2) {
+    font: 700 26px 'Space Grotesk', sans-serif;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin: 48px 0 18px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+
+  .prose :global(h2:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 18px;
+  }
+
+  .prose :global(strong) {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .prose :global(ul) {
+    padding-left: 20px;
+    list-style: disc;
+    margin: 0 0 18px;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 8px;
+  }
+
+  .prose :global(code) {
+    font-family: 'ui-monospace', monospace;
+    font-size: 0.9em;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    padding: 2px 7px;
+    border-radius: 5px;
+    color: var(--accent);
+  }
+
+  /* ─── Navigation ────────────────────────────────── */
+  .detail-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 28px 80px;
+    border-top: 1px solid var(--line);
+    gap: 16px;
+    max-width: 1180px;
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .nav-link:hover {
+    opacity: 0.8;
+  }
+
+  .nav-next {
+    align-items: flex-end;
+  }
+
+  .nav-dir {
+    font: 600 12px 'Manrope', sans-serif;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-name {
+    font: 700 18px 'Space Grotesk', sans-serif;
+    color: var(--text);
+  }
+
+  @media (max-width: 640px) {
+    .metriques-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .nav-next {
+      align-items: flex-start;
+    }
+  }
+</style>

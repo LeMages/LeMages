@@ -1,0 +1,130 @@
+---
+---
+
+<section id="home" class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Disponible — stage de fin d'études · 2026
+    </div>
+
+    <h1 class="hero-title">
+      Concevoir des systèmes <span>Data & ML</span> fiables,<br />
+      prêts pour l'échelle.
+    </h1>
+
+    <p class="hero-description">
+      Étudiant ingénieur en 5ème année Data Engineering & Machine Learning à l'EFREI Paris.
+      Je construis des pipelines de bout en bout — de l'ingestion à la prévision, jusqu'au monitoring.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="/projets" class="btn-primary">Voir mes projets →</a>
+      <a href="#contact" class="btn-secondary">Me contacter</a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 70px);
+    padding: 120px 0 96px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    width: 760px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, var(--accent-soft), transparent 72%);
+    filter: blur(20px);
+    transform: translateX(-50%);
+    animation: floaty 9s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 55% at 50% 28%, #000, transparent 78%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.02);
+    font: 600 12px 'Manrope', sans-serif;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #39d98a;
+    box-shadow: 0 0 10px #39d98a;
+    flex-shrink: 0;
+  }
+
+  .hero-title {
+    font: 700 clamp(40px, 7vw, 82px) / 1.02 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+    margin: 26px 0 0;
+    max-width: 980px;
+    color: var(--text);
+  }
+
+  .hero-title span {
+    color: var(--accent);
+  }
+
+  .hero-description {
+    font: 400 19px / 1.6 'Manrope', sans-serif;
+    color: var(--muted);
+    max-width: 620px;
+    margin: 26px 0 0;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+  }
+
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 80px 0 64px;
+    }
+
+    .hero-title br {
+      display: none;
+    }
+  }
+</style>

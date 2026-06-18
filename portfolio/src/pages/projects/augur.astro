@@ -1,0 +1,372 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Augur — Case Study · Loïc Cupif"
+  description="Framework de prévision de séries temporelles avec orchestration distribuée Python + Rust : ingestion, entraînement, orchestration et monitoring, de bout en bout."
+>
+  <Nav currentPath="/projects/augur" />
+
+  <main>
+    <!-- HERO CASE STUDY -->
+    <section class="cs-hero">
+      <div class="cs-glow" aria-hidden="true"></div>
+      <div class="container cs-hero-inner">
+        <a href="/" class="cs-back">← Retour à l'accueil</a>
+
+        <div class="section-label" style="margin-top: 30px;">
+          Case study · 01 · Forecasting
+        </div>
+
+        <h1 class="cs-title">Augur</h1>
+
+        <p class="cs-subtitle">
+          Framework de prévision de séries temporelles avec orchestration distribuée Python + Rust :
+          ingestion, entraînement, orchestration et monitoring, de bout en bout.
+        </p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Rôle</div>
+            <div class="cs-meta-value">Auteur · end-to-end</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Période</div>
+            <div class="cs-meta-value">2025</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Domaine</div>
+            <div class="cs-meta-value">Retail · demand forecasting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <div class="container cs-content">
+
+      <!-- Banner -->
+      <div class="cs-banner placeholder-visual" aria-label="Dashboard de prévision Augur">
+        <span class="visual-label">[ bannière — dashboard de prévision ]</span>
+      </div>
+
+      <!-- Metrics -->
+      <div class="cs-metrics">
+        <div class="metric-card" data-reveal>
+          <div class="metric-value">0.80</div>
+          <div class="metric-label">R²</div>
+        </div>
+        <div class="metric-card" data-reveal>
+          <div class="metric-value">80%</div>
+          <div class="metric-label">Directional accuracy</div>
+        </div>
+        <div class="metric-card" data-reveal>
+          <div class="metric-value">8%</div>
+          <div class="metric-label">SMAPE</div>
+        </div>
+        <div class="metric-card" data-reveal>
+          <div class="metric-value">2000+</div>
+          <div class="metric-label">séries temporelles</div>
+        </div>
+      </div>
+
+      <!-- Section 01 -->
+      <div class="cs-section" data-reveal>
+        <div class="cs-section-num">01 · Contexte</div>
+        <p class="cs-section-text">
+          Le cœur de prévision en Python s'appuie sur Darts, XGBoost et un Temporal Fusion Transformer (PyTorch),
+          avec Polars pour le traitement de données. L'objectif : un forecasting fiable sur des milliers de séries retail.
+        </p>
+      </div>
+
+      <!-- Section 02 -->
+      <div class="cs-section" data-reveal>
+        <div class="cs-section-num">02 · Architecture</div>
+        <p class="cs-section-text">
+          L'orchestration distribuée est assurée par un runner écrit en Rust (Axum, Tokio, sqlx), persisté en PostgreSQL
+          et conteneurisé via des images Docker multi-stage, avec un pipeline CI/CD sur GitHub Actions.
+        </p>
+        <div class="cs-visual placeholder-visual" aria-label="Diagramme d'architecture">
+          <span class="visual-label">[ diagramme : ingestion → train → orchestration → monitoring ]</span>
+        </div>
+      </div>
+
+      <!-- Section 03 -->
+      <div class="cs-section" data-reveal>
+        <div class="cs-section-num">03 · Résultats</div>
+        <div class="cs-results-grid">
+          <div class="cs-visual-sm placeholder-visual" aria-label="Courbe prévision vs réel">
+            <span class="visual-label">[ courbe prévision vs réel ]</span>
+          </div>
+          <p class="cs-results-text">
+            Sur 2000+ séries, le modèle atteint un R² de 0.80 et une directional accuracy de 80%,
+            avec un SMAPE de 8% — des performances exploitables pour la planification de la demande.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 04 -->
+      <div class="cs-section cs-stack-section" data-reveal>
+        <div class="cs-section-num">04 · Stack technique</div>
+        <div class="cs-stack">
+          {['Python', 'Darts', 'XGBoost', 'PyTorch (TFT)', 'Polars', 'Rust', 'Axum', 'Tokio', 'sqlx', 'PostgreSQL', 'Docker', 'GitHub Actions'].map((tech) => (
+            <span class="tag-muted-lg">{tech}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Nav bottom -->
+      <div class="cs-nav-bottom">
+        <a href="/" class="cs-nav-prev">← Tous les projets</a>
+        <span class="cs-nav-next">Blackjack Monte Carlo →</span>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .cs-hero {
+    position: relative;
+    padding: 54px 0 80px;
+    overflow: hidden;
+  }
+
+  .cs-glow {
+    position: absolute;
+    top: -140px;
+    left: 50%;
+    width: 760px;
+    height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, var(--accent-soft), transparent 72%);
+    filter: blur(20px);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .cs-hero-inner {
+    position: relative;
+  }
+
+  .cs-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: 600 14px 'Manrope', sans-serif;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .cs-back:hover {
+    color: var(--text);
+  }
+
+  .cs-title {
+    font: 700 clamp(44px, 7vw, 78px) / 1 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+    margin: 22px 0 0;
+    color: var(--text);
+  }
+
+  .cs-subtitle {
+    font: 400 19px / 1.6 'Manrope', sans-serif;
+    color: #bcbcc4;
+    max-width: 640px;
+    margin: 22px 0 0;
+  }
+
+  .cs-meta {
+    display: flex;
+    gap: 34px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .cs-meta-label {
+    font: 600 11px 'Manrope', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .cs-meta-value {
+    font: 600 15px 'Manrope', sans-serif;
+    color: var(--text);
+    margin-top: 5px;
+  }
+
+  .cs-content {
+    max-width: 1000px;
+    padding-bottom: 20px;
+  }
+
+  .cs-banner {
+    height: 380px;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: flex-end;
+    padding: 22px;
+  }
+
+  .cs-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 54px;
+  }
+
+  .metric-card {
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+    text-align: center;
+  }
+
+  .metric-value {
+    font: 700 38px 'Space Grotesk', sans-serif;
+    color: var(--accent);
+  }
+
+  .metric-label {
+    font: 500 13px 'Manrope', sans-serif;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .cs-section {
+    margin-top: 66px;
+  }
+
+  .cs-section + .cs-section {
+    margin-top: 54px;
+  }
+
+  .cs-section-num {
+    font: 600 13px 'Manrope', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .cs-section-text {
+    font: 400 18px / 1.75 'Manrope', sans-serif;
+    color: #cdcdd4;
+    max-width: 720px;
+    margin: 16px 0 0;
+  }
+
+  .cs-visual {
+    height: 260px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 22px;
+  }
+
+  .cs-visual-sm {
+    height: 220px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cs-results-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    margin-top: 18px;
+    align-items: center;
+  }
+
+  .cs-results-text {
+    font: 400 17px / 1.75 'Manrope', sans-serif;
+    color: #cdcdd4;
+    margin: 0;
+  }
+
+  .cs-stack-section {
+    padding-bottom: 10px;
+  }
+
+  .cs-stack {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .tag-muted-lg {
+    font: 500 13px 'Manrope', sans-serif;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    padding: 7px 13px;
+    border-radius: 9px;
+  }
+
+  .cs-nav-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+    padding: 30px 0 80px;
+    border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .cs-nav-prev {
+    font: 600 14px 'Manrope', sans-serif;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .cs-nav-prev:hover {
+    color: var(--text);
+  }
+
+  .cs-nav-next {
+    font: 700 20px 'Space Grotesk', sans-serif;
+    color: var(--text);
+  }
+
+  .visual-label {
+    font: 600 11px 'Space Grotesk', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5a5a66;
+  }
+
+  @media (max-width: 768px) {
+    .cs-metrics {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cs-results-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cs-metrics {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cs-banner {
+      height: 240px;
+    }
+  }
+</style>
