@@ -2,7 +2,7 @@
 titre: "Connect4Master"
 tagline: "Intelligence artificielle Minimax pour défier au Puissance 4."
 featured: false
-ordre: 6
+ordre: 8
 stack: ["Python", "Algorithme", "Pygame"]
 lienGithub: "https://github.com/LeMages/Connect4Master"
 image: "/images/projets/connect4master.png"

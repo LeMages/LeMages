@@ -2,7 +2,7 @@
 titre: "Board Game App"
 tagline: "Application web pour deviner des jeux de société à partir d'images."
 featured: false
-ordre: 7
+ordre: 9
 stack: ["Node.js", "Vue.js", "MySQL"]
 lienGithub: "https://github.com/LeMages/Board-Game-App"
 image: "/images/projets/board-game-app.png"

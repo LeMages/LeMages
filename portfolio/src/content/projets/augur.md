@@ -1,21 +1,18 @@
 ---
 titre: "Augur"
 tagline: "Framework de prévision de séries temporelles (retail / demand forecasting), orchestration distribuée Python + Rust."
+categorie: "Time-series forecasting"
+resume: "Framework de prévision de séries temporelles (retail / demand forecasting), avec orchestration distribuée Python + Rust : ingestion, entraînement, orchestration et monitoring."
 featured: true
 ordre: 1
-stack: ["Python", "Darts", "XGBoost", "PyTorch (TFT)", "Polars", "Rust", "Axum", "Tokio", "sqlx", "PostgreSQL", "Docker", "GitHub Actions"]
-image: "/images/projets/augur.png"
+stack: ["Python", "Rust", "PyTorch (TFT)", "Polars", "Darts", "XGBoost", "Axum", "Tokio", "sqlx", "PostgreSQL", "Docker", "GitHub Actions"]
+imageAlt: "Dashboard de prévision Augur"
 contexteGroupe: false
-metriques:
-  - { label: "R²", valeur: "0.80" }
-  - { label: "Directional Accuracy", valeur: "80%" }
-  - { label: "SMAPE", valeur: "8%" }
-  - { label: "Séries temporelles", valeur: "2000+" }
 ---
 
 ## Contexte
 
-Projet entrepreneurial né de mon stage chez Need4Viz, où j'ai appris le forecasting et perçu son potentiel. J'y ai constaté que le code de forecasting est toujours quasiment le même d'un dataset à l'autre. Plutôt que de recoder à chaque nouveau dataset, j'ai créé un framework réutilisable.
+Projet personnel né de mon stage chez Need4Viz, où j'ai appris le forecasting. J'y ai constaté que le code de forecasting est quasiment le même d'un dataset à l'autre : plutôt que de le recoder à chaque nouveau dataset, j'ai construit un framework réutilisable.
 
 ## Ce qui a été construit
 

@@ -15,7 +15,7 @@ export const experiences: Experience[] = [
     location: 'Paris',
     type: 'stage',
     typeLabel: 'Expérience · Stage',
-    title: 'Data Engineer & ML Engineer',
+    title: 'Stage Ingénieur Data & IA',
     bullets: [
       'Conception de solutions de prévision de séries temporelles et de systèmes RAG en Python.',
       'Forecasting sur 2000+ séries temporelles — R²=0.70, DA=80%.',
@@ -35,7 +35,7 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    period: '2022 – Aujourd\'hui',
+    period: '2022 – 2027',
     company: 'EFREI Paris',
     location: 'Paris',
     type: 'ingenieur',
@@ -55,23 +55,30 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    label: 'Développement Web',
-    skills: [
-      { abbr: 'HTML', label: 'HTML' },
-      { abbr: 'CSS', label: 'CSS' },
-      { abbr: 'JS', label: 'JavaScript' },
-      { abbr: 'Vue', label: 'Vue.js' },
-      { abbr: 'Ast', label: 'Astro' },
-      { abbr: 'No', label: 'Node.js' },
-    ],
-  },
-  {
     label: 'Langages',
     skills: [
       { abbr: 'Py', label: 'Python' },
       { abbr: 'Rs', label: 'Rust' },
       { abbr: 'C', label: 'C' },
+      { abbr: 'Jv', label: 'Java' },
+    ],
+  },
+  {
+    label: 'Frameworks',
+    skills: [
       { abbr: 'Ta', label: 'Tauri' },
+      { abbr: 'Ax', label: 'Axum' },
+      { abbr: 'Vue', label: 'Vue.js' },
+      { abbr: 'Ast', label: 'Astro' },
+    ],
+  },
+  {
+    label: 'Développement Web',
+    skills: [
+      { abbr: 'HTML', label: 'HTML' },
+      { abbr: 'CSS', label: 'CSS' },
+      { abbr: 'JS', label: 'JavaScript' },
+      { abbr: 'No', label: 'Node.js' },
     ],
   },
   {
@@ -83,6 +90,7 @@ export const skillCategories: SkillCategory[] = [
       { abbr: 'GH', label: 'GitHub' },
       { abbr: 'CL', label: 'AWS / GCP' },
       { abbr: 'GA', label: 'GitHub Actions' },
+      { abbr: 'Ty', label: 'Typst' },
     ],
   },
   {
@@ -90,6 +98,7 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { abbr: 'SQL', label: 'SQL' },
       { abbr: 'Pg', label: 'PostgreSQL' },
+      { abbr: 'Pv', label: 'pgvector' },
       { abbr: 'Rd', label: 'Redis' },
       { abbr: 'Cs', label: 'Cassandra' },
       { abbr: 'Mg', label: 'MongoDB' },
@@ -107,6 +116,16 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { abbr: 'PT', label: 'PyTorch' },
       { abbr: 'FC', label: 'Forecasting' },
+      { abbr: 'Dt', label: 'Darts' },
+      { abbr: 'XG', label: 'XGBoost' },
+    ],
+  },
+  {
+    label: 'IA générative',
+    skills: [
+      { abbr: 'LLM', label: 'LLM' },
+      { abbr: 'RAG', label: 'RAG' },
+      { abbr: 'Ol', label: 'Ollama' },
     ],
   },
 ];

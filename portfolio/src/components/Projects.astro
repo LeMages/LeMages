@@ -1,5 +1,8 @@
 ---
-import { projects } from '../data/projects';
+import { getCollection } from 'astro:content';
+
+const projets = (await getCollection('projets', (p) => p.data.featured))
+  .sort((a, b) => a.data.ordre - b.data.ordre);
 ---
 
 <section id="projets" class="projects">
@@ -13,43 +16,46 @@ import { projects } from '../data/projects';
     </div>
 
     <div class="projects-list">
-      {projects.map((project, index) => {
+      {projets.map((projet, index) => {
         const isOdd = index % 2 === 0;
+        const { data } = projet;
         return (
           <article class="project-card" data-reveal>
             <div class={`project-visual ${!isOdd ? 'order-2' : ''}`}>
-              <span class="project-number">{project.number}</span>
-              {project.image ? (
+              <span class="project-number">{String(index + 1).padStart(2, '0')}</span>
+              {data.image ? (
                 <img
-                  src={project.image}
-                  alt={project.imageAlt}
+                  src={data.image}
+                  alt={data.imageAlt ?? data.titre}
                   loading="lazy"
                   decoding="async"
                   class="project-img"
                 />
               ) : (
-                <span class="visual-label">{project.visualLabel}</span>
+                <span class="visual-label">[ visuel — {data.titre} ]</span>
               )}
             </div>
 
             <div class={`project-info ${!isOdd ? 'order-1' : ''}`}>
-              <div class="project-category">{project.category}</div>
-              <h3 class="project-title">{project.title}</h3>
-              <p class="project-desc">{project.description}</p>
+              {data.categorie && <div class="project-category">{data.categorie}</div>}
+              <h3 class="project-title">{data.titre}</h3>
+              <p class="project-desc">{data.resume ?? data.tagline}</p>
 
-              <div class="project-tags">
-                {project.tags.map((tag) => (
-                  <span class="tag-accent">{tag}</span>
-                ))}
-              </div>
+              {data.metriques && data.metriques.length > 0 && (
+                <div class="project-tags">
+                  {data.metriques.map((m) => (
+                    <span class="tag-accent">{m.valeur} {m.label}</span>
+                  ))}
+                </div>
+              )}
 
               <div class="project-stack">
-                {project.techStack.map((tech) => (
+                {data.stack.slice(0, 4).map((tech) => (
                   <span class="tag-muted">{tech}</span>
                 ))}
               </div>
 
-              <a href={project.pageUrl} class="project-link">
+              <a href={`/projets/${projet.id}`} class="project-link">
                 Voir le projet →
               </a>
             </div>

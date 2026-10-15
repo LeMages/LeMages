@@ -1,11 +1,14 @@
 ---
 titre: "Wild Dump Prevention"
 tagline: "Pipeline de détection de dépôts sauvages par vision par ordinateur."
+categorie: "Computer vision"
+resume: "Pipeline de détection de dépôts sauvages par vision par ordinateur. Téléversement de photos/vidéos, règles visuelles de détection, et dashboard de statistiques et zones à risque."
 featured: true
 ordre: 3
-stack: ["Flask", "PostgreSQL", "Pillow", "OpenCV", "YOLO"]
+stack: ["Flask", "PostgreSQL", "OpenCV", "Pillow", "YOLO"]
 lienGithub: "https://github.com/benjidsv/wild-dump-prevention"
 image: "/images/projets/wild-dump-prevention.jpg"
+imageAlt: "Dashboard détection Wild Dump"
 contexteGroupe: true
 metriques:
   - { label: "Précision", valeur: "90%" }

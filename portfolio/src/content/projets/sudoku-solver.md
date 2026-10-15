@@ -2,7 +2,7 @@
 titre: "Sudoku Solver"
 tagline: "Solveur de Sudoku 9×9 par backtracking."
 featured: false
-ordre: 5
+ordre: 7
 stack: ["Python", "Algorithme", "Backtracking"]
 lienGithub: "https://github.com/LeMages/Sudoku-Solver"
 image: "/images/projets/sudoku-solver.jpg"

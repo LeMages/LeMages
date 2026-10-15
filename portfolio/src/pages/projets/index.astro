@@ -23,7 +23,7 @@ const secondary = sorted.filter((p) => !p.data.featured);
         <div class="section-label">Portfolio</div>
         <h1 class="page-title">Projets<span>.</span></h1>
         <p class="page-desc">
-          Une sélection de projets personnels, entrepreneuriaux et scolaires — data, ML, algorithmes et web.
+          Une sélection de projets personnels et scolaires — data, ML, algorithmes et web.
         </p>
       </div>
     </section>
@@ -63,7 +63,7 @@ const secondary = sorted.filter((p) => !p.data.featured);
                 </div>
                 <h2 class="card-title">{projet.data.titre}</h2>
                 <p class="card-tagline">{projet.data.tagline}</p>
-                {projet.data.metriques && (
+                {projet.data.metriques && projet.data.metriques.length > 0 && (
                   <div class="card-metriques">
                     {projet.data.metriques.slice(0, 3).map((m) => (
                       <div class="card-metrique">

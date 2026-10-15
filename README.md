@@ -5,6 +5,9 @@
   EFREI Paris - Big Data & Machine Learning
 </p>
 
+<p align="center">
+  📍 Geneva area · Looking for a 6-month end-of-studies <strong>Data Engineer internship</strong> from March 2027
+</p>
 
 
 ---
@@ -18,17 +21,25 @@ My focus: time-series forecasting, high-performance pipelines, and ML engineerin
 
 ### [Augur](https://www.loiccupif.com/projets/augur) — Time-Series Forecasting Framework
 
-End-to-end demand forecasting framework (retail, 2 000+ time series) — Python orchestration + Rust services, fully containerized with CI/CD.
+End-to-end demand forecasting framework for retail — ingestion, training, orchestration and monitoring. Python forecasting core (Darts, XGBoost, Temporal Fusion Transformer) with Rust orchestration services, fully containerized with CI/CD.
 
-`R² 0.80` `SMAPE 8%` `DA 80%` · `Python` `Rust` `PyTorch (TFT)` `Polars` `PostgreSQL` `Docker` `GitHub Actions`
+`Python` `Rust` `PyTorch (TFT)` `Polars` `PostgreSQL` `Docker` `GitHub Actions`
 
 ---
 
-### [Blackjack Monte Carlo](https://github.com/LeMages) — High-Performance Simulation Engine
+### [FindMyJob](https://github.com/LeMages/FindMyJob) — Job Application Tracker with LLM
 
-Rust simulation engine comparing 6 card counting systems in parallel. 50 million hands, results in Parquet, analyzed via a React/Vite dashboard.
+Open-source desktop app to manage job applications end to end. Offers are added from a simple link, then a tailored CV and cover letter are generated from Typst templates, with the LLM only selecting relevant projects and writing the letter.
 
-`50M hands` `Zen Count +0.560%` `EV +1.058 u./100` · `Rust` `rayon` `Parquet` `React` `Vite`
+`Rust` `Tauri 2` `Vue 3` `SQLite` `Claude API` `Typst` `GitHub Actions`
+
+---
+
+### ALGN — Autonomous Legal Graph Navigator
+
+School project (Zizofa × EFREI, private repo). An LLM that navigates a legal code article by article, following cross-references, with an audit log tracing the path behind each answer.
+
+`Python` `Ollama` `PostgreSQL` `pgvector` `LLM` `RAG`
 
 ---
 
@@ -70,7 +81,7 @@ YOLO-based illegal dump detection from photos and videos. EXIF geolocation extra
         <br>PostgreSQL
       </td>
       <td align="center" width="96">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="48" height="48" alt="ML / AI" />
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="48" height="48" alt="ML / AI" />
         <br>ML / AI
       </td>
       <td align="center" width="96">
@@ -81,9 +92,13 @@ YOLO-based illegal dump detection from photos and videos. EXIF geolocation extra
   </table>
 </div>
 
+**Languages & Frameworks** — Python · Rust · Java · JavaScript · Tauri · Axum · Vue.js  
 **Data & ML** — Polars · Spark · PyTorch · XGBoost · Darts · Forecasting  
-**Infra** — Docker · GitHub Actions · AWS · GCP  
-**Databases** — PostgreSQL · Redis · Cassandra · MongoDB
+**GenAI** — LLM / RAG · Ollama  
+**Infra** — Docker · GitHub Actions · AWS · GCP · Typst  
+**Databases** — PostgreSQL · pgvector · Redis · Cassandra · MongoDB
+
+**Languages** — French (native) · English (B2 — TOEIC 840)
 
 ---
 

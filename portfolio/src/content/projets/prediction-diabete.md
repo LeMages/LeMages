@@ -2,7 +2,7 @@
 titre: "Prédiction du Diabète"
 tagline: "Modèle d'ensemble et explicabilité SHAP pour la prédiction du diabète."
 featured: false
-ordre: 4
+ordre: 6
 stack: ["Python", "Machine Learning", "Flask", "Docker", "SHAP"]
 lienGithub: "https://github.com/benjidsv/mldiabetesprediction"
 image: "/images/projets/diabetes-prediction.png"

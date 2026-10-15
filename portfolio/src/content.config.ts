@@ -6,11 +6,14 @@ const projets = defineCollection({
   schema: z.object({
     titre: z.string(),
     tagline: z.string(),
+    categorie: z.string().optional(),
+    resume: z.string().optional(),
     featured: z.boolean().default(false),
     ordre: z.number(),
     stack: z.array(z.string()),
     lienGithub: z.string().url().optional(),
     image: z.string().optional(),
+    imageAlt: z.string().optional(),
     contexteGroupe: z.boolean().default(false),
     metriques: z
       .array(

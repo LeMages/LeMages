@@ -26,7 +26,7 @@ const nextProjet = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] :
   title={`${projet.data.titre} — Loïc Cupif`}
   description={projet.data.tagline}
 >
-  <Nav currentPath={`/projets/${projet.slug}`} />
+  <Nav currentPath={`/projets/${projet.id}`} />
 
   <main>
     <!-- HERO -->
@@ -80,9 +80,6 @@ const nextProjet = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] :
               </div>
             ))}
           </div>
-          {projet.id === 'augur' && (
-            <p class="metriques-note">Métriques obtenues sur le dataset Rossmann.</p>
-          )}
         </div>
       </section>
     )}
@@ -251,13 +248,6 @@ const nextProjet = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] :
     font: 500 12px 'Manrope', sans-serif;
     color: var(--muted);
     margin-top: 8px;
-  }
-
-  .metriques-note {
-    font: 400 13px 'Manrope', sans-serif;
-    color: var(--muted);
-    margin-top: 16px;
-    font-style: italic;
   }
 
   /* ─── Contenu Markdown ──────────────────────────── */
