@@ -2,7 +2,7 @@
 titre: "Blackjack Monte Carlo"
 tagline: "Moteur de simulation Monte Carlo haute performance en Rust, comparant 6 systèmes de comptage de cartes."
 featured: false
-ordre: 4
+ordre: 5
 stack: ["Rust", "rayon", "Parquet", "React", "Vite"]
 lienGithub: "https://github.com/LeMages"
 image: "/images/projets/projet_black_jack.webp"

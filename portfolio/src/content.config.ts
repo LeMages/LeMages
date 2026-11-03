@@ -12,6 +12,7 @@ const projets = defineCollection({
     ordre: z.number(),
     stack: z.array(z.string()),
     lienGithub: z.string().url().optional(),
+    lienSite: z.string().url().optional(),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     contexteGroupe: z.boolean().default(false),

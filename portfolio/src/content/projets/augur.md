@@ -6,6 +6,7 @@ resume: "Framework de prévision de séries temporelles (retail / demand forecas
 featured: true
 ordre: 1
 stack: ["Python", "Rust", "PyTorch (TFT)", "Polars", "Darts", "XGBoost", "Axum", "Tokio", "sqlx", "PostgreSQL", "Docker", "GitHub Actions"]
+image: "/images/projets/augur.png"
 imageAlt: "Dashboard de prévision Augur"
 contexteGroupe: false
 ---

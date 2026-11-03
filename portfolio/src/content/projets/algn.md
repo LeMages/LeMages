@@ -2,7 +2,7 @@
 titre: "ALGN — Autonomous Legal Graph Navigator"
 tagline: "LLM qui navigue dans un code juridique article par article, avec journal d'audit."
 featured: false
-ordre: 5
+ordre: 4
 stack: ["Python", "Ollama", "PostgreSQL", "pgvector", "LLM", "RAG"]
 contexteGroupe: true
 ---
