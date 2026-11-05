@@ -34,7 +34,7 @@ import { experiences } from '../data/experience';
 
 <style>
   .experience {
-    padding: 86px 0;
+    padding: var(--section-pad) 0;
     border-top: 1px solid var(--line);
   }
 
@@ -101,7 +101,7 @@ import { experiences } from '../data/experience';
     margin-top: 6px;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     .timeline-item {
       grid-template-columns: 1fr;
       gap: 12px;

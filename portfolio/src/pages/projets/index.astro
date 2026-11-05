@@ -55,10 +55,10 @@ const secondary = sorted.filter((p) => !p.data.featured);
               <div class="card-body">
                 <div class="card-stack">
                   {projet.data.stack.slice(0, 4).map((tech) => (
-                    <span class="tag-muted">{tech}</span>
+                    <span class="tag-muted tag-sm">{tech}</span>
                   ))}
                   {projet.data.stack.length > 4 && (
-                    <span class="tag-muted">+{projet.data.stack.length - 4}</span>
+                    <span class="tag-muted tag-sm">+{projet.data.stack.length - 4}</span>
                   )}
                 </div>
                 <h2 class="card-title">{projet.data.titre}</h2>
@@ -107,10 +107,10 @@ const secondary = sorted.filter((p) => !p.data.featured);
               <div class="card-sec-body">
                 <div class="card-stack">
                   {projet.data.stack.slice(0, 3).map((tech) => (
-                    <span class="tag-muted">{tech}</span>
+                    <span class="tag-muted tag-sm">{tech}</span>
                   ))}
                   {projet.data.stack.length > 3 && (
-                    <span class="tag-muted">+{projet.data.stack.length - 3}</span>
+                    <span class="tag-muted tag-sm">+{projet.data.stack.length - 3}</span>
                   )}
                 </div>
                 <h2 class="card-sec-title">{projet.data.titre}</h2>
@@ -149,7 +149,7 @@ const secondary = sorted.filter((p) => !p.data.featured);
   }
 
   .page-title {
-    font: 700 clamp(42px, 6vw, 72px) / 1.02 'Space Grotesk', sans-serif;
+    font: 700 clamp(36px, 6vw, 72px) / 1.02 'Space Grotesk', sans-serif;
     letter-spacing: -0.03em;
     margin: 16px 0 0;
     color: var(--text);
@@ -199,9 +199,11 @@ const secondary = sorted.filter((p) => !p.data.featured);
     transition: border-color 0.2s ease, transform 0.25s ease;
   }
 
-  .card-featured:hover {
-    border-color: var(--accent-soft);
-    transform: translateY(-4px);
+  @media (hover: hover) {
+    .card-featured:hover {
+      border-color: var(--accent-soft);
+      transform: translateY(-4px);
+    }
   }
 
   .card-img {
@@ -332,9 +334,11 @@ const secondary = sorted.filter((p) => !p.data.featured);
     transition: border-color 0.2s ease, transform 0.25s ease;
   }
 
-  .card-secondary:hover {
-    border-color: var(--accent-soft);
-    transform: translateY(-3px);
+  @media (hover: hover) {
+    .card-secondary:hover {
+      border-color: var(--accent-soft);
+      transform: translateY(-3px);
+    }
   }
 
   .card-sec-img {
@@ -389,15 +393,6 @@ const secondary = sorted.filter((p) => !p.data.featured);
     color: var(--accent);
   }
 
-  /* ─── Shared ─────────────────────────────────────── */
-  .tag-muted {
-    font: 500 11px 'Manrope', sans-serif;
-    color: var(--muted);
-    border: 1px solid var(--line);
-    padding: 3px 9px;
-    border-radius: 6px;
-  }
-
   /* ─── Responsive ─────────────────────────────────── */
   @media (max-width: 1024px) {
     .featured-grid {
@@ -407,12 +402,34 @@ const secondary = sorted.filter((p) => !p.data.featured);
     .secondary-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    /* Nombre impair de projets : la dernière carte prend toute la ligne en format horizontal */
+    .card-featured:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      flex-direction: row;
+    }
+
+    .card-featured:last-child:nth-child(odd) .card-img {
+      flex: 0 0 50%;
+      aspect-ratio: auto;
+      min-height: 100%;
+    }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .featured-grid,
     .secondary-grid {
       grid-template-columns: 1fr;
+    }
+
+    .card-featured:last-child:nth-child(odd) {
+      flex-direction: column;
+    }
+
+    .card-featured:last-child:nth-child(odd) .card-img {
+      flex: none;
+      aspect-ratio: 16/9;
+      min-height: 0;
     }
   }
 </style>

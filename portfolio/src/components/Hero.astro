@@ -33,6 +33,8 @@
   .hero {
     position: relative;
     min-height: calc(100vh - 70px);
+    /* svh : sur mobile, 100vh ignore la barre d'URL et pousse les CTA hors écran */
+    min-height: calc(100svh - 70px);
     padding: 120px 0 96px;
     overflow: hidden;
     display: flex;
@@ -92,7 +94,7 @@
   }
 
   .hero-title {
-    font: 700 clamp(40px, 7vw, 82px) / 1.02 'Space Grotesk', sans-serif;
+    font: 700 clamp(34px, 7vw, 82px) / 1.02 'Space Grotesk', sans-serif;
     letter-spacing: -0.03em;
     margin: 26px 0 0;
     max-width: 980px;
@@ -120,7 +122,7 @@
 
   @media (max-width: 768px) {
     .hero {
-      padding: 80px 0 64px;
+      padding: 48px 0 56px;
     }
 
     .hero-title br {

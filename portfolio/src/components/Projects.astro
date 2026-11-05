@@ -68,7 +68,7 @@ const projets = (await getCollection('projets', (p) => p.data.featured))
 
 <style>
   .projects {
-    padding: 86px 0;
+    padding: var(--section-pad) 0;
     border-top: 1px solid var(--line);
   }
 
@@ -220,13 +220,15 @@ const projets = (await getCollection('projets', (p) => p.data.featured))
     gap: 13px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .project-card {
       grid-template-columns: 1fr;
     }
 
+    /* Ratio des captures plutôt qu'une hauteur fixe, sinon l'image est rognée sur tablette */
     .project-visual {
-      min-height: 200px;
+      min-height: 0;
+      aspect-ratio: 16/9;
     }
 
     .order-1, .order-2 {

@@ -30,7 +30,7 @@ import { skillCategories } from '../data/experience';
 
 <style>
   .expertise {
-    padding: 86px 0;
+    padding: var(--section-pad) 0;
     border-top: 1px solid var(--line);
   }
 
@@ -73,9 +73,11 @@ import { skillCategories } from '../data/experience';
     cursor: default;
   }
 
-  .skill-card:hover {
-    border-color: var(--accent-soft);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    .skill-card:hover {
+      border-color: var(--accent-soft);
+      transform: translateY(-2px);
+    }
   }
 
   .skill-icon {

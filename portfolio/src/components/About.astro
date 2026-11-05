@@ -63,7 +63,7 @@
 
 <style>
   .about {
-    padding: 86px 0;
+    padding: var(--section-pad) 0;
     border-top: 1px solid var(--line);
   }
 
@@ -92,7 +92,7 @@
   }
 
   .about-title {
-    font: 700 clamp(30px, 4vw, 44px) / 1.08 'Space Grotesk', sans-serif;
+    font: 700 clamp(26px, 4vw, 44px) / 1.08 'Space Grotesk', sans-serif;
     letter-spacing: -0.02em;
     margin: 0;
     color: var(--text);
@@ -162,14 +162,15 @@
     color: var(--accent);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .about-grid {
       grid-template-columns: 1fr;
       gap: 32px;
     }
 
+    /* On garde le format portrait de la photo, mais plafonné pour ne pas occuper tout l'écran */
     .about-photo {
-      aspect-ratio: 16/9;
+      max-width: 320px;
     }
   }
 

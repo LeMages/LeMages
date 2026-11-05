@@ -10,6 +10,20 @@
   --line: rgba(255, 255, 255, 0.09);
   --text: #ECECEF;
   --muted: #9498A3;
+
+  /* Espacements fluides : marge latérale et padding vertical des sections */
+  --gutter: clamp(16px, 5vw, 28px);
+  --section-pad: 86px;
+}
+
+/* Points de rupture communs (les variables CSS ne marchent pas dans @media) :
+   - 480px  : petit mobile
+   - 768px  : mobile / tablette portrait (nav burger, grilles sur 1 colonne)
+   - 1024px : tablette paysage (grilles réduites) */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 56px;
+  }
 }
 
 * {
@@ -92,7 +106,7 @@ img {
 }
 
 .section-title {
-  font: 700 clamp(30px, 4.4vw, 46px) / 1.05 'Space Grotesk', sans-serif;
+  font: 700 clamp(26px, 4.4vw, 46px) / 1.05 'Space Grotesk', sans-serif;
   letter-spacing: -0.02em;
   margin: 18px 0 0;
   color: var(--text);
@@ -105,7 +119,7 @@ img {
 .container {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 var(--gutter);
 }
 
 .btn-primary {
@@ -121,9 +135,11 @@ img {
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.07);
+@media (hover: hover) {
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+  }
 }
 
 .btn-secondary {
@@ -158,6 +174,13 @@ img {
   border: 1px solid var(--line);
   padding: 5px 10px;
   border-radius: 8px;
+}
+
+/* Variante compacte pour les cartes de la page /projets */
+.tag-muted.tag-sm {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 6px;
 }
 
 .placeholder-visual {
