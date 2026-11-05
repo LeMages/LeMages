@@ -4,7 +4,8 @@ tagline: "Moteur de simulation Monte Carlo haute performance en Rust, comparant 
 featured: false
 ordre: 5
 stack: ["Rust", "rayon", "Parquet", "React", "Vite"]
-lienGithub: "https://github.com/LeMages"
+lienGithub: "https://github.com/LeMages/Black-Jack-Monte-Carlo"
+lienSite: "https://dashboard-lemages-projects.vercel.app/"
 image: "/images/projets/projet_black_jack.webp"
 contexteGroupe: false
 metriques:

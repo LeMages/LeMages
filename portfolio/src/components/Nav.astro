@@ -8,7 +8,7 @@ const { currentPath = '/' } = Astro.props;
 <nav>
   <div class="container nav-inner">
     <a href="/" class="nav-logo">
-      <span class="nav-logo-icon">L</span>
+      <img class="nav-logo-icon" src="/images/logo.png" alt="" width="34" height="34" />
       <span class="nav-logo-name">Loïc Cupif</span>
     </a>
 
@@ -103,15 +103,9 @@ const { currentPath = '/' } = Astro.props;
   }
 
   .nav-logo-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 9px;
-    background: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font: 700 15px 'Space Grotesk', sans-serif;
-    color: var(--accent-ink);
+    width: 34px;
+    height: 34px;
+    display: block;
   }
 
   .nav-logo-name {
